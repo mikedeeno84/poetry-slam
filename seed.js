@@ -16,12 +16,14 @@ fsg scaffolding, keep in mind that fsg always uses the same database
 name in the environment files.
 
 */
-
+var poems = require('./poems.js');
+console.log(poems.slice(0,3))
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
+var Poem = Promise.promisifyAll(mongoose.model('Poem'));
 
 var seedUsers = function () {
 
@@ -41,6 +43,11 @@ var seedUsers = function () {
 };
 
 connectToDb.then(function () {
+	Poem.createAsync(poems)
+		.then(function(){
+			console.log("the poems are in!")
+		})
+		.then(null, console.log)
     User.findAsync({}).then(function (users) {
         if (users.length === 0) {
             return seedUsers();

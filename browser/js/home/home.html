@@ -1,4 +1,7 @@
 <section id="home">
-    <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting>
+<div class="container">
+	<oi-select oi-options="poem.title for poem in poems" ng-model="selectedPoem"></oi-select>
+</div>
+<poem listen="listen(selectedPoem)" poem="selectedPoem"></poem>
+<!-- <div class="container" ng-repeat="poem in poems"><poem listen="listen(poem)" poem="poem"></poem></div> -->
 </section>

@@ -1,0 +1,7 @@
+<div>
+<h2>{{poem.title}}</h2>
+<p>{{poem.author}}</p>
+<button ng-click="listen(poem)" >Listen to this Poem</button>
+<br>
+	<p ng-repeat="line in poem.text track by $index">{{line}}</p>
+</div>

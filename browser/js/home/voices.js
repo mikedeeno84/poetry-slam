@@ -1,0 +1,1 @@
+var voices =  window.speechSynthesis.getVoices();
